@@ -14,23 +14,8 @@ namespace HelloASP.NET.Controllers
         
         public IActionResult Index()
         {
-            string html = "<form method = 'post' action = '/CreateMessage/'>" +
-                 "<input type = 'text' name = 'name'/>" +
-                 "<select name = 'language'>" +
-                 "<option value=''>--Please choose an option--</option> " +
-                  "<option value='Hello! '> English </option> " +
-
-                 "<option value='Bon Jour! '> French </option> " +
-
-                 "<option value='Hola! '> Spanish </option> " +
-
-                 "<option value='Zdravo! '> Serbian </option> " +
-
-                 "<option value='Guten Tag! '> German </option> " +
-                 "</select>" +
-                 "<input type='submit' value = 'Greet Me!'/>" +
-                 "</form>";
-            return Content(html, "text/html");
+            
+            return View();
         }
 
         //GET: /hello/welcome
@@ -41,7 +26,8 @@ namespace HelloASP.NET.Controllers
         
         public IActionResult Welcome(string name = "Whoever you are")
         {
-            return Content("<h1> Welcome to my App " + name + "!<h/1", "text/html");
+            ViewBag.person = name;
+            return View();
         }
 
         [HttpPost("/CreateMessage/")]
